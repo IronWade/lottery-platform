@@ -1,0 +1,46 @@
+{
+  "name": "lottery-desktop",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "彩票分析与推荐平台 — Windows 桌面端",
+  "main": "main.js",
+  "scripts": {
+    "dev": "electron .",
+    "dist": "electron-builder",
+    "pack:portable": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.lottery.platform",
+    "productName": "彩票分析大师",
+    "copyright": "Copyright © 2026",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js"
+    ],
+    "extraResources": [
+      { "from": "runtime", "to": "runtime" },
+      { "from": "../server/src", "to": "server/src" },
+      { "from": "../server/package.json", "to": "server/package.json" },
+      { "from": "../server/node_modules", "to": "server/node_modules" },
+      { "from": "../server/public", "to": "server/public" },
+      { "from": "ml-dist/lottery-ml", "to": "ml" }
+    ],
+    "win": {
+      "target": ["nsis"]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "彩票分析大师-安装包-${version}.exe",
+      "shortcutName": "彩票分析大师"
+    },
+    "compression": "normal"
+  }
+}

@@ -1,0 +1,21 @@
+node_modules/
+server/data/*.db
+server/data/*.db-*
+server/public/
+dist/
+*.log
+
+# Python ML 服务
+ml/.venv/
+ml/models/*.pt
+ml/models/*.json
+__pycache__/
+
+# 桌面端
+desktop/node_modules/
+desktop/release/
+desktop/ml-dist/
+desktop/ml-build/
+desktop/*.spec
+desktop/runtime/
+!desktop/lottery-ml.spec

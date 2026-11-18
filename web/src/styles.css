@@ -1,0 +1,391 @@
+:root {
+  --bg: #0d1220;
+  --panel: #161d31;
+  --panel-light: #1d2740;
+  --border: #2a3554;
+  --text: #e6ebf5;
+  --text-dim: #8b96b3;
+  --red: #e84545;
+  --blue: #3b82f6;
+  --gold: #f0b429;
+  --green: #22c58b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 28px;
+  height: 60px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-logo {
+  font-size: 18px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  white-space: nowrap;
+}
+
+.app-nav {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.app-nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.app-nav a:hover {
+  color: var(--text);
+  background: var(--panel-light);
+}
+
+.app-nav a.router-link-active {
+  color: #fff;
+  background: linear-gradient(90deg, rgba(232, 69, 69, 0.25), rgba(240, 180, 41, 0.25));
+}
+
+.app-main {
+  flex: 1;
+  padding: 24px 28px 48px;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.page-sub {
+  color: var(--text-dim);
+  font-size: 13px;
+  margin: 0 0 20px;
+}
+
+/* ---------- 彩球 ---------- */
+.ball {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.ball-red {
+  background: radial-gradient(circle at 30% 30%, #ff7b7b, var(--red) 65%);
+  box-shadow: 0 2px 8px rgba(232, 69, 69, 0.45);
+}
+
+.ball-blue {
+  background: radial-gradient(circle at 30% 30%, #7db4ff, var(--blue) 65%);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.45);
+}
+
+.ball-gold {
+  background: radial-gradient(circle at 30% 30%, #ffd97a, var(--gold) 65%);
+  box-shadow: 0 2px 8px rgba(240, 180, 41, 0.45);
+  color: #4a3200;
+}
+
+.ball-sm {
+  width: 26px;
+  height: 26px;
+  font-size: 12px;
+}
+
+.ball-md {
+  width: 34px;
+  height: 34px;
+  font-size: 15px;
+}
+
+.ball-lg {
+  width: 46px;
+  height: 46px;
+  font-size: 19px;
+}
+
+.ball-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- 面板 ---------- */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.panel-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-title::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--red), var(--gold));
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+  gap: 20px;
+}
+
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.stat-card .label {
+  color: var(--text-dim);
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.stat-card .value {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* ---------- Element Plus 深色适配 ---------- */
+.el-table {
+  --el-table-bg-color: transparent;
+  --el-table-tr-bg-color: transparent;
+  --el-table-header-bg-color: var(--panel-light);
+  --el-table-border-color: var(--border);
+  --el-table-text-color: var(--text);
+  --el-table-header-text-color: var(--text-dim);
+  --el-table-row-hover-bg-color: var(--panel-light);
+  background: transparent;
+}
+
+.el-dialog {
+  --el-dialog-bg-color: var(--panel);
+  --el-dialog-title-font-size: 16px;
+}
+
+.el-pagination {
+  --el-pagination-bg-color: transparent;
+  --el-pagination-button-disabled-bg-color: transparent;
+  --el-pagination-hover-color: var(--gold);
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.el-select__wrapper,
+.el-input__wrapper {
+  background: var(--panel-light) !important;
+  box-shadow: 0 0 0 1px var(--border) inset !important;
+  color: var(--text);
+}
+
+.el-select-dropdown,
+.el-picker__popper {
+  --el-bg-color: var(--panel);
+  --el-border-color: var(--border);
+  --el-text-color-regular: var(--text);
+  --el-fill-color-light: var(--panel-light);
+}
+
+.el-tag {
+  border: none;
+}
+
+.chart-box {
+  width: 100%;
+  height: 380px;
+}
+
+/* 走势图横向滚动容器(列数多时小屏可横滑) */
+.chart-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chart-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.chart-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.text-dim {
+  color: var(--text-dim);
+}
+
+.hot-tag {
+  color: var(--red);
+  font-weight: 600;
+}
+
+/* ---------- 点选号码网格 ---------- */
+.ball-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+  max-width: 460px;
+  gap: 6px;
+  width: 100%;
+}
+
+.pick-ball {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  cursor: pointer;
+  background: var(--panel-light);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  transition: all 0.15s;
+  margin: 0 auto;
+}
+
+.pick-ball:hover {
+  border-color: var(--red);
+  color: var(--text);
+}
+
+.pick-ball.active-red {
+  background: radial-gradient(circle at 30% 30%, #ff7b7b, var(--red) 65%);
+  color: #fff;
+  border-color: transparent;
+  font-weight: 700;
+}
+
+.pick-ball.active-blue {
+  background: radial-gradient(circle at 30% 30%, #7db4ff, var(--blue) 65%);
+  color: #fff;
+  border-color: transparent;
+  font-weight: 700;
+}
+
+.pick-ball.active-gold {
+  background: radial-gradient(circle at 30% 30%, #ffd97a, var(--gold) 65%);
+  color: #4a3200;
+  border-color: transparent;
+  font-weight: 700;
+}
+
+.pick-ball.active-kill {
+  background: #2a1e2e;
+  color: var(--text-dim);
+  border-color: var(--red);
+  text-decoration: line-through;
+}
+
+.pick-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+
+/* ---------- 小屏适配 ---------- */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 0 12px;
+    gap: 10px;
+    height: auto;
+    min-height: 52px;
+    flex-wrap: wrap;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .app-logo {
+    font-size: 15px;
+  }
+
+  .app-main {
+    padding: 14px 12px 36px;
+  }
+
+  .panel {
+    padding: 14px;
+  }
+
+  .page-title {
+    font-size: 18px;
+  }
+
+  .ball-lg {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+
+  .stat-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cold-tag {
+  color: var(--blue);
+  font-weight: 600;
+}
